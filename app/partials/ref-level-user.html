@@ -1,0 +1,87 @@
+<script>
+    if(typeof app === 'undefined'){
+        document.location.href='index.php';
+    }
+</script>
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles m-b-0">
+	 <div class="col-md-5 col-8 align-self-center">
+		<h3 class="text-themecolor m-b-0 m-t-0">Level User</h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="javascript:void(0)">Referensi</a></li>
+			<li class="breadcrumb-item active">Level User</li>
+		</ol>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+	<!-- Column -->
+	<div class="col-12">
+		<div class="card card-outline-primary">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white"><i class="mdi mdi-view-list"></i> Referensi Level User</h4>
+			</div>
+			<div class="card-body table-responsive">
+				<!-- <div class="table-responsive m-t-40"> -->
+					<table id="tabel-ruh" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Kode Level</th>
+								<th>Nama Level</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+</div>
+<!-- Row -->
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+<script>
+    $(document).ready(function() {
+		
+		function myDatatable(){
+			jQuery('#tabel-ruh').dataTable().fnDestroy();
+			jQuery('#tabel-ruh').dataTable({
+				//bFilter: false,
+				bProcessing:true,
+				oLanguage:{
+					"sProcessing":   "<i style='font-size:48px;' class='fa fa-refresh fa-spin'></i>"+
+									"<div>Sedang Proses...</div>",
+					"sLengthMenu":   "Tampilan _MENU_ entri",
+					"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+					"sInfo":         "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+					"sInfoEmpty":    "Tampilan 0 hingga 0 dari 0 entri",
+					"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+					"sInfoPostFix":  "",
+					"sSearch":       "Cari:",
+					"sUrl":          "",
+					"oPaginate": {
+					  "sFirst":    "Awal",
+					  "sPrevious": "Sebelum",
+					  "sNext":     "Sesudah",
+					  "sLast":     "Akhir"
+					}
+				},
+				sAjaxSource: "ref/level-user"
+			});
+		}
+		
+		myDatatable();
+		
+    });
+</script>

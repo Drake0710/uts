@@ -1,0 +1,208 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../fonts/Roboto-Regular.ttf);
+}
+
+body {
+	font-family: "Roboto", sans-serif !important;
+}
+
+.left-sidebar{
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 16px 16px 0px, rgba(0, 0, 0, 0.18) 0px 0px 16px 0px;
+}
+
+.topbar .top-navbar .navbar-header{
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.24), 0 0 16px 0 rgba(0, 0, 0, 0.18);
+}
+
+.tahun{
+	font-family: Roboto;
+	font-size: 12px;
+	letter-spacing: 2px;
+	text-align: right;
+	color: #ffffff;
+}
+
+.profile-keterangan{
+	display: inline-table;
+    position: absolute;
+    top: 15px;
+    left: 100px;
+    width: 120px;
+	font-family: Roboto;
+	font-size: 11px;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.mini-sidebar .profile-keterangan{
+	display:none;
+}
+
+.user-profile .profile-img {
+    width: 50px;
+    margin-left: 25px;
+    padding: 20px 0;
+    border-radius: 100%;
+}
+
+.user-profile .profile-img::before {
+    -webkit-animation: 2.5s blow 0s linear infinite;
+    animation: 2.5s blow 0s linear infinite;
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    margin: 0 auto;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.user-profile .profile-text > a{
+	background:#673ab7;
+}
+
+.page-titles{
+	background:transparent;
+	box-shadow:none;
+	-webkit-box-shadow:none;
+}
+
+.text-themecolor{
+	font-family:Roboto;
+	font-size: 24px;
+}
+
+.update{
+	font-family: Roboto;
+	font-size: 12px;
+	font-weight: 300;
+}
+
+.card-body>.d-flex>.round{
+	background:transparent !important;
+}
+
+.text-primary2{
+	color:#9c27b0;
+}
+
+.text-primary3{
+	color:#7b54c4;
+}
+
+.text-primary4{
+	color:#ae44be;
+}
+
+.text-label1{
+	font-family: Roboto;
+	font-size: 28px;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.text-label2{
+	opacity: 0.8;
+	font-family: Roboto;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.title-chart{
+	font-family: Roboto;
+	font-size: 22px;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.subtitle-chart{
+	opacity: 0.8;
+	font-family: Roboto;
+	font-size: 12px;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.round-lg{
+	font-size:60px;
+}
+
+.amp-pxl .ct-series-a .ct-bar {
+  /* Colour of your bars */
+  stroke: #9c27b0;
+  opacity: 0.8;
+}
+
+.amp-pxl .ct-series-b .ct-bar {
+  /* Colour of your bars */
+  stroke: #7b54c4;
+  opacity: 0.8;
+}
+
+.c3-chart-arc path{
+	stroke:transparent;
+}
+
+.text-pie1{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(255, 152, 1);
+}
+
+.text-pie2{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(255, 87, 35);
+}
+
+.text-pie3{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(244, 67, 54);
+}
+
+.text-pie4{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(156, 39, 176);
+}
+
+.text-pie5{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(63, 81, 181);
+}
+
+.text-pie6{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(4, 169, 244);
+}
+
+.text-pie7{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(139, 195, 74);
+}
+
+.text-pie8{
+	font-family: Roboto;
+	font-size: 14px;
+	color: rgb(255, 152, 1);
+}
+
+html body #visitor .c3-chart-arcs-title{
+	font-family: Roboto;
+	font-size: 22px;
+	font-weight: bold;
+	fill: rgba(0, 0, 0, 0.87);
+}
+
+.inisiatif{
+	font-size:12px;
+	fill: #99abb4
+}
+
+.card-outline-primary .card-header{
+	background: #673ab7;
+    border-color: #673ab7;
+}

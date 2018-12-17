@@ -1,0 +1,338 @@
+
+/* PADDING */
+
+.no-padding{
+	padding:0 !important;
+}
+
+.no-padding-side{
+	padding-left:0 !important;
+	padding-right:0 !important;
+}
+
+.no-padding-upside{
+	padding-top:0 !important;
+	padding-left:0 !important;
+}
+
+.no-padding-left{
+	padding-left:0 !important;
+}
+
+.no-padding-right{
+	padding-right:0 !important;
+}
+.no-padding-top{
+	padding-top:0 !important;
+}
+.no-padding-bottom{
+	padding-bottom:0 !important;
+}
+
+/* MARGIN */
+
+.no-margin{
+	margin:0 !important;
+}
+
+.no-margin-side{
+	margin-left:0 !important;
+	margin-right:0 !important;
+}
+
+.no-margin-upside{
+	margin-top:0 !important;
+	margin-left:0 !important;
+}
+
+.no-margin-left{
+	margin-left:0 !important;
+}
+
+.no-margin-right{
+	margin-right:0 !important;
+}
+.no-margin-top{
+	margin-top:0 !important;
+}
+.no-margin-bottom{
+	margin-bottom:0 !important;
+}
+
+/* BORDER */
+
+.no-border{
+	border:none !important;
+}
+
+.no-border-side{
+	border-left:none !important;
+	border-right:none !important;
+}
+
+.no-border-upside{
+	border-top:none !important;
+	border-left:none !important;
+}
+
+.no-border-left{
+	border-left:none !important;
+}
+
+.no-border-right{
+	border-right:none !important;
+}
+.no-border-top{
+	border-top:none !important;
+}
+.no-border-bottom{
+	border-bottom:none !important;
+}
+
+.border-purple{
+	border: 1px solid #E97CFF !important;
+}
+
+.border-grey{
+	border: 1px solid #B0B0B0 !important;
+}
+
+.border-blue{
+	border-color: #3399CC !important;
+}
+
+.border-blue2{
+	border: 1px solid #3399CC !important;
+}
+
+.border-orange{
+	border: 1px solid #FDC900 !important;
+}
+
+.border-green{
+	border: 1px solid #7ED321 !important;
+}
+
+.border-pink{
+	border: 1px solid #FA5569 !important;
+}
+
+/* BOX-SHADOW */
+.no-box-shadow{
+	box-shadow:none !important;
+}
+
+/* FLOAT */
+
+.float-right{
+	float: right !important;
+}
+
+/* BACKGROUND */
+.bg-white{
+	background-color:#fff !important;
+}
+
+.bg-orange{
+	background-color:#FDC900 !important;
+}
+
+.bg-green{
+	background-color:#7ED321 !important;
+}
+
+.bg-blue{
+	background-color:#367fa9 !important;
+}
+
+.bg-blue2{
+	background-color:#64CEF0 !important;
+}
+
+.bg-aqua{
+	background-color:#00acd6 !important;
+}
+
+.bg-red{
+	background-color:#d73925 !important;
+}
+
+.bg-black{
+	background-color:#4A4A4A !important;
+}
+
+.bg-pink{
+	background-color:#FA5569 !important;
+}
+
+.bg-grey{
+	background-color:#4A4A4A !important;
+}
+
+.bg-grey2{
+	background-color: #B0B0B0 !important;
+}
+
+.bg-purple{
+	background-color: #E97CFF !important;
+}
+
+.base-blue{
+	background-color:#3399CC !important;
+}
+
+.base-blue2{
+	background-color:#39A7DE !important;
+}
+
+.base-soft-blue{
+	background-color:#B4E2F1 !important;
+}
+
+.base-grey{
+	background-color:#efefef !important;
+}
+
+.base-green{
+	background-color:#32BEA6 !important;
+}
+
+.base-transparent{
+	background-color:transparent !important;
+}
+
+/* TEXT */
+
+.text-black{
+	color:#000 !important;
+}
+
+.text-white{
+	color:#fff !important;
+}
+
+.text-blue{
+	color:#3399CC !important;
+}
+
+.text-blue2{
+	color:#39A7DE !important;
+}
+
+.text-green{
+	color:#61A517 !important;
+}
+
+.text-grey{
+	color:#4A4A4A !important;
+}
+
+.text-red{
+	color:#E73D03 !important;
+}
+
+.text-pink{
+	color:#FA5569 !important;
+}
+
+.text-purple{
+	color:#9013FE !important;
+}
+
+.text-center{
+	text-align:center !important;
+}
+
+.text-right{
+	text-align:right !important;
+}
+
+.font-5{
+	font-size:5px !important;
+}
+
+.font-7{
+	font-size:7px !important;
+}
+
+.font-9{
+	font-size:9px !important;
+}
+
+.font-10{
+	font-size:10px !important;
+}
+
+.font-11{
+	font-size:11px !important;
+}
+
+.font-12{
+	font-size:12px !important;
+}
+
+.font-18{
+	font-size:18px !important;
+}
+
+.font-24{
+	font-size:24px !important;
+}
+
+.font-300{
+	font-weight:300 !important;
+}
+
+.font-600{
+	font-weight:600 !important;
+}
+
+.line-12{
+	line-height:12px !important;
+}
+
+.italic{
+	font-style:italic;
+}
+
+.underline{
+	text-decoration:underline;
+}
+
+/* CUSTOM BOOTSTRAP */
+
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-xs-5ths {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+    .col-sm-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5ths {
+        width: 20%;
+        float: left;
+    }
+}

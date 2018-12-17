@@ -1,0 +1,394 @@
+<script>
+    if(typeof app === 'undefined'){
+        document.location.href='index.php';
+    }
+</script>
+
+<style>
+td.details-control {
+    background: url('../template/img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../template/img/details_close.png') no-repeat center center;
+}
+.chosen-container-multi .chosen-choices
+{
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.3);
+    border: none;
+    min-height: 38px;
+    cursor: text;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    text-indent: 0;
+	line-height: 1.25;
+	padding: .5rem .75rem;
+    font-size: 1rem;
+}
+</style>
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles m-b-0">
+	 <div class="col-md-5 col-8 align-self-center">
+		<h3 class="text-themecolor m-b-0 m-t-0">Monitoring Inisiasi</h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="javascript:void(0)">Monitoring</a></li>
+			<li class="breadcrumb-item active">Monitoring Inisiasi</li>
+		</ol>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+	<!-- Column -->
+	<div class="col-12">
+		<div class="card card-outline-primary" id="div-tabel">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white"><i class="mdi mdi-monitor"></i> Monitoring Inisiasi</h4>
+			</div>
+			<div class="card-body table-responsive">
+				<!-- <div class="table-responsive m-t-40"> -->
+					<table id="tabel-ruh" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>No</th>
+								<th>Nama Inisiator</th>
+								<th>Asal Unit</th>
+								<th>Alur Peraturan</th>
+								<th>Keterangan</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+</div>
+<!-- Row -->
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Timeline</h4>
+				<ul class="timeline">
+					<li>
+						<div class="timeline-badge success"><img class="img-responsive" alt="user" src="../assets/images/users/1.jpg" alt="img"> </div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Genelia</h4>
+								<p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small> </p>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>
+							</div>
+						</div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-badge warning"><img class="img-responsive" alt="user" src="../assets/images/users/2.jpg" alt="img"> </div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Ritesh Deshmukh</h4>
+							</div>
+							<div class="timeline-body">
+								<p><img class="img-responsive" alt="user" src="../assets/images/users/3.jpg" alt="img"></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="timeline-badge danger"><i class="fa fa-bomb"></i> </div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Lorem ipsum dolor</h4>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
+							</div>
+						</div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Lorem ipsum dolor</h4>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="timeline-badge info"><i class="fa fa-save"></i> </div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Lorem ipsum dolor</h4>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.</p>
+								<hr>
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-gear"></i> <span class="caret"></span> </button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="#">Action</a>
+										<a class="dropdown-item" href="#">Another action</a>
+										<a class="dropdown-item" href="#">Something else here</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Separated link</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-badge success"><i class="fa fa-graduation-cap"></i> </div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Lorem ipsum dolor</h4>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+<script>
+    $(document).ready(function() {
+		
+		jQuery.fn.dataTable.ext.errMode = 'none';
+		
+		jQuery('.chosen').chosen();
+		
+		/*jQuery.get('dropdown/jenis-peraturan', function(result){
+			jQuery('#jenis_peraturan').html(result).trigger('chosen:updated');
+		});
+		
+		jQuery.get('dropdown/sifat-peraturan', function(result){
+			jQuery('#sifat_peraturan').html(result).trigger('chosen:updated');
+		});
+		
+		jQuery.get('dropdown/label', function(result){
+			jQuery('#label').html(result).trigger('chosen:updated');
+		});
+		
+		function format ( d ) {
+			// `d` is the original data object for the row
+			return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+				'<tr>'+
+					'<td>Jenis Peraturan:</td>'+
+					'<td>'+d[7]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Sifat Peraturan:</td>'+
+					'<td>'+d[8]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Tentang:</td>'+
+					'<td>'+d[9]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Abstrak:</td>'+
+					'<td>'+d[10]+'</td>'+
+				'</tr>'+
+			'</table>';
+		}
+		
+		function cari_data(id){
+			jQuery.getJSON('mon/peraturan/'+id, function(result){
+				if(result){
+					jQuery('#inp-id').val(result.id);
+					jQuery('#inp-rekambaru').val('0');
+					jQuery('#id').val(result.id);
+					jQuery('#no_peraturan').val(result.no_peraturan);
+					jQuery('#tahun_peraturan').val(result.tahun_peraturan);
+					jQuery('#jenis_peraturan').val(result.id_jenis_peraturan).trigger('chosen:updated');
+					jQuery('#sifat_peraturan').val(result.id_sifat_peraturan).trigger('chosen:updated');
+					jQuery('#tentang').val(result.tentang);
+					jQuery('#abstrak').val(result.abstrak);
+					jQuery('#status').val(result.is_aktif);
+					if(result.is_aktif=='1'){
+						jQuery('#status').prop('checked',true);
+					} else {
+						jQuery('#status').prop('checked',false);
+					}
+					jQuery('#publish').val(result.is_publish);
+					if(result.is_publish=='1'){
+						jQuery('#publish').prop('checked',true);
+					} else {
+						jQuery('#publish').prop('checked',false);
+					}
+					jQuery('#div-tabel').hide();
+					jQuery('#div-form').show();
+				}
+			});
+		}
+		
+		function form_valid(str_id){
+			var arr_id=str_id.split(',');
+			var lanjut=true;
+			for(x=0;x<arr_id.length;x++){
+				if(jQuery('#'+arr_id[x]).val()==''){
+					jQuery('#warning-'+arr_id[x]).show();
+					lanjut=false;
+				}
+			}
+			return lanjut;
+		}
+		
+		var table = jQuery('#tabel-ruh').DataTable({
+			//bFilter: false,
+			//bProcessing:true,
+			oLanguage:{
+				"sProcessing":   "Sedang proses...",
+				"sLengthMenu":   "Tampilan _MENU_ entri",
+				"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+				"sInfo":         "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+				"sInfoEmpty":    "Tampilan 0 hingga 0 dari 0 entri",
+				"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+				"sInfoPostFix":  "",
+				"sSearch":       "Cari:",
+				"sUrl":          "",
+				"oPaginate": {
+				  "sFirst":    "Awal",
+				  "sPrevious": "Sebelum",
+				  "sNext":     "Sesudah",
+				  "sLast":     "Akhir"
+				}
+			},
+			"columns": [
+				{
+					"className":      'details-control',
+					"orderable":      false,
+					"data":           null,
+					"defaultContent": ''
+				},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{}
+			],
+			aaSorting: [],
+			bServerSide: true,
+			sAjaxSource: "mon/peraturan"
+		});
+		
+		// Add event listener for opening and closing details
+		$('#tabel-ruh').on('click', 'td.details-control', function () {
+			var tr = $(this).closest('tr');
+			var row = table.row( tr );
+	 
+			if ( row.child.isShown() ) {
+				// This row is already open - close it
+				row.child.hide();
+				tr.removeClass('shown');
+			}
+			else {
+				// Open this row
+				row.child( format(row.data()) ).show();
+				tr.addClass('shown');
+			}
+		} );
+		
+		function form_default(){
+			jQuery('input,textarea').val('');
+			jQuery('.chosen').val('').trigger('chosen:updated');
+			jQuery('#div-form').hide();
+			jQuery('#div-tabel').show();
+			//jQuery('#div-kppn,#div-kanwil').hide();
+			jQuery('.warning').hide();
+		}
+		
+		form_default();
+		
+		$("input[type='checkbox']").change(function(){
+			if($(this).prop("checked") == true){
+			   //run code
+			   jQuery($(this).val('1'));
+			}else{
+			   //run code
+			   jQuery($(this).val('0'));
+			}
+		});
+		
+		jQuery('#batal').click(function(){
+			form_default();
+		});
+		
+		jQuery('body').off('click', '.ubah-data').on('click', '.ubah-data', function(){
+			var id=this.id;
+			cari_data(id);
+		});
+		
+		jQuery('#simpan').click(function(){
+			jQuery('#simpan').html('<span class="">Loading.....</span>');
+			jQuery('#simpan').prop('disabled', true);
+			
+			var lanjut = form_valid('id,no_peraturan,tahun_peraturan,tentang,abstrak,jenis_peraturan,sifat_peraturan,status,publish');
+			
+			if(lanjut){
+			
+				jQuery.get('token', function(token){
+					if(token){
+						jQuery('#_token').val(token);
+						var data = jQuery('#form-ruh').serialize();
+						jQuery.ajax({
+							url:'mon/peraturan',
+							method:'PUT',
+							data:data,
+							success:function(result){
+								if(result=='success'){
+									jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+									jQuery('#simpan').prop('disabled',false);
+									alertify.log('Proses simpan berhasil!');
+									form_default();
+									table.ajax.reload();
+								}
+								else{
+									alertify.log(result);
+									jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+									jQuery('#simpan').prop('disabled', false);
+								}
+							},
+							error:function(result){
+								alertify.log('Koneksi terputus!');
+								jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+								jQuery('#simpan').prop('disabled', false);
+							}
+						});
+						
+					}
+					else{
+						jQuery('#simpan').html('Simpan');
+						jQuery('#simpan').prop('disabled',false);
+						alertify.log('Proses ubah gagal. Silahkan refresh halaman browser anda.');
+					}
+				});
+				
+			}
+			else{
+				alertify.log('Kolom tidak dapat dikosongkan!');
+				jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+				jQuery('#simpan').prop('disabled', false);
+			}
+		});*/
+		
+    });
+</script>

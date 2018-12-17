@@ -1,0 +1,231 @@
+<script>
+    if(typeof app === 'undefined'){
+        document.location.href='index.php';
+    }
+</script>
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles m-b-0">
+	<div class="col-md-5 col-8 align-self-center">
+		<h3 class="text-themecolor">Dashboard</h3>
+	</div>
+	<div class="col-md-7 col-4 align-self-center">
+		<div class="d-flex m-t-10 justify-content-end">
+			<div class="d-flex m-r-20 m-l-10 hidden-md-down">
+				<div class="chart-text m-r-10">
+					<h4 class="m-t-0 text-muted update">update terakhir 7 Mei 2018 12.41 WIB</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+	<!-- Column -->
+	<div class="col-lg-3 col-md-6">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex flex-row">
+					<div class="round round-lg align-self-center round-info"><i class="ti-pencil text-primary2"></i></div>
+					<div class="m-l-10 align-self-center">
+						<h3 class="m-b-0 font-light text-label1">10</h3>
+						<h5 class="text-muted m-b-0 text-label2">Usulan</h5></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+	<!-- Column -->
+	<div class="col-lg-3 col-md-6">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex flex-row">
+					<div class="round round-lg align-self-center round-warning"><i class="mdi mdi-file-document text-primary2"></i></div>
+					<div class="m-l-10 align-self-center">
+						<h3 class="m-b-0 font-light text-label1">7</h3>
+						<h5 class="text-muted m-b-0 text-label2">Draft</h5></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+	<!-- Column -->
+	<div class="col-lg-3 col-md-6">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex flex-row">
+					<div class="round round-lg align-self-center round-primary"><i class="mdi mdi-sync text-primary2"></i></div>
+					<div class="m-l-10 align-self-center">
+						<h3 class="m-b-0 font-light text-label1">5</h3>
+						<h5 class="text-muted m-b-0 text-label2">Proses</h5></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+	<!-- Column -->
+	<div class="col-lg-3 col-md-6">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex flex-row">
+					<div class="round round-lg align-self-center round-danger"><i class="mdi mdi-checkbox-marked-outline text-primary2"></i></div>
+					<div class="m-l-10 align-self-center">
+						<h3 class="m-b-0 font-light text-label1">17</h3>
+						<h5 class="text-muted m-b-0 text-label2">Net</h5></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+</div>
+<div class="row">
+	<!-- Column -->
+	<div class="col-lg-8 col-md-7">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12">
+						<div class="d-flex flex-wrap">
+							<div>
+								<h3 class="card-title title-chart m-b-5">Statistik Pemrosesan Peraturan</h3>
+								<h6 class="card-subtitle subtitle-chart">Perbandingan jumlah peraturan yang diinisiasi dengan peraturan net </h6> </div>
+							<div class="ml-auto">
+								<ul class="list-inline">
+									<li>
+										<h6 class="text-primary4"><i class="fa fa-circle font-10 m-r-10 "></i>Inisiatif</h6> </li>
+									<li>
+										<h6 class="text-primary3"><i class="fa fa-circle font-10 m-r-10"></i>Net</h6> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="amp-pxl" style="height: 360px;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-5">
+		<div class="card">
+			<div class="card-body p-b-0">
+				<h3 class="card-title title-chart m-b-5">Inisiasi Peraturan</h3>
+				<h6 class="card-subtitle subtitle-chart">Jumlah berdasarkan eselon II</h6>
+				<div id="visitor" style="height:270px; width:100%;"></div>
+			</div>
+			<div class="card-body row p-10">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<ul class="m-b-0" style="list-style:none;">
+						<li>
+							<h6 class="text-pie1"><i class="fa fa-circle font-10 m-r-10 "></i>Setditjen</h6> </li>
+						<li>
+							<h6 class="text-pie2"><i class="fa fa-circle font-10 m-r-10"></i>Dit.SITP</h6> </li>
+						<li>
+							<h6 class="text-pie3"><i class="fa fa-circle font-10 m-r-10"></i>Dit.SP</h6> </li>
+						<li>
+							<h6 class="text-pie4"><i class="fa fa-circle font-10 m-r-10"></i>Dit.PKN</h6> </li>
+					</ul>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<ul class="m-b-0" style="list-style:none;">
+						<li>
+							<h6 class="text-pie5"><i class="fa fa-circle font-10 m-r-10"></i>Dit.APK</h6> </li>
+						<li>
+							<h6 class="text-pie6"><i class="fa fa-circle font-10 m-r-10"></i>Dit.PA</h6> </li>
+						<li>
+							<h6 class="text-pie7"><i class="fa fa-circle font-10 m-r-10"></i>Dit.SMI</h6> </li>
+						<li>
+							<h6 class="text-pie8"><i class="fa fa-circle font-10 m-r-10"></i>Dit.PK-BLU</h6> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Row -->
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+<script>
+
+	// ============================================================== 
+    // Sales overview
+    // ============================================================== 
+    var chart2 = new Chartist.Bar('.amp-pxl', {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Agt', 'Sept', 'Okt', 'Nov', 'Des'],
+          series: [
+            [9, 5, 3, 7, 5, 10, 3, 9, 5, 3, 7],
+            [6, 3, 9, 5, 4, 6, 4, 6, 3, 9, 7]
+          ]
+        }, {
+          axisX: {
+            // On the x-axis start means top and end means bottom
+            position: 'end',
+            showGrid: false
+          },
+          axisY: {
+            // On the y-axis start means left and end means right
+            position: 'start'
+          },
+        high:'10',
+        low: '0',
+        plugins: [
+            Chartist.plugins.tooltip()
+        ]
+    });
+	
+	// ============================================================== 
+    // Our visitor
+    // ============================================================== 
+    
+    var chart = c3.generate({
+        bindto: '#visitor',
+        data: {
+            columns: [
+                ['Setditjen', 30],
+                ['Dit.SITP', 50],
+                ['Dit.SP', 40],
+                ['Dit.PKN', 45],
+                ['Dit.APK', 35],
+                ['Dit.PA', 30],
+                ['Dit.SMI', 20],
+                ['Dit.PK-BLU', 10],
+            ],
+            
+            type : 'donut',
+            onclick: function (d, i) { console.log("onclick", d, i); },
+            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        },
+        donut: {
+            label: {
+                show: false
+              },
+            title: "200",
+            width:35,
+            
+        },
+        
+        legend: {
+          hide: true
+          //or hide: 'data1'
+          //or hide: ['data1', 'data2']
+        },
+        color: {
+              pattern: ['#ff9801', '#ff5723', '#f44336', '#9c27b0', '#3f51b5', '#04a9f4', '#009688', '#8bc34a']
+        }
+    });
+	
+	var label = d3.select('text.c3-chart-arcs-title');
+  
+	label.html(''); // remove existant text
+	label.insert('tspan').text('200').attr('dy', -10).attr('x', 0);
+	label.insert('tspan').text('Total Inisiatif').attr('dy', 20).attr('x', 0).attr('class','inisiatif');
+
+</script>

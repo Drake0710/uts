@@ -1,0 +1,291 @@
+<script>
+    if(typeof app === 'undefined'){
+        document.location.href='index.php';
+    }
+</script>
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles m-b-0">
+	 <div class="col-md-5 col-8 align-self-center">
+		<h3 class="text-themecolor m-b-0 m-t-0">Jenis Peraturan</h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="javascript:void(0)">Referensi</a></li>
+			<li class="breadcrumb-item active">Jenis Peraturan</li>
+		</ol>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+	<!--Column-->
+	<div class="col-12">
+		<div class="card card-outline-primary" id="div-table">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white">
+					<i class="mdi mdi-view-list"></i>
+					Referensi Jenis Peraturan
+					<span class="pull-right" id="btn-tambah"></span>
+				</h4>
+			</div>
+			<div class="card-body table-responsive">
+				<table id="tabel-ruh" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Jenis Peraturan</th>
+							<th>Aksi</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="card card-outline-primary" id="div-form">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white"><i class="mdi mdi-laptop-chromebook"></i> Referensi Jenis Peraturan
+				</h4>
+			</div>
+			<div class="card-body">
+				<form id="form-ruh" name="form-ruh" class="form-horizontal">
+					<input type="text" id="inp-id" name="inp-id" class="hide">
+					<input type="text" id="inp-rekambaru" name="inp-rekambaru" class="hide">
+					<input type="hidden" id="_token" name="_token">
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Jenis Peraturan</label>
+						<div class="col-lg-6">
+							<input id="jenis-peraturan" name="jenis-peraturan" class="form-control"></input>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-label" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<br>
+					<div class="form-group row">
+						<label class="control-label col-lg-3"></label>
+						<div class="col-lg-5">
+							<button id="simpan" type="submit" class="btn btn-primary waves-effect waves-light m-r-10">Simpan</button>
+							<button id="batal" type="submit" class="btn btn-inverse waves-effect waves-light">Batal</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+</div>
+<!-- Row -->
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+<script>
+	$(document).ready(function() {
+		
+		//cari data
+		function cari_data(id){
+			jQuery.getJSON('ref/jenis-peraturan/'+id, function(result){
+				if (result) {
+					jQuery('#inp-id').val(result.id);
+					jQuery('#inp-rekambaru').val('0');
+					jQuery('#id').val(result.id);
+					jQuery('#jenis-peraturan').val(result.jenis_peraturan);
+					jQuery('#div-table').hide();
+					jQuery('#div-form').show();
+				}
+			});
+		}
+
+		//cek kebenaran
+		function form_valid(str_id){
+			var arr_id=str_id.split(',');
+			var lanjut=true;
+			for (i = 0; i < arr_id.length; i++) {
+				if (jQuery('#'+arr_id[i]).val()=='') {
+					jQuery('#warning-'+arr_id[i]).show();
+					lanjut=false;
+				}
+			}
+			return lanjut;
+		}
+
+		function myDataTable(){
+			jQuery('#tabel-ruh').dataTable().fnDestroy();
+			jQuery('#tabel-ruh').dataTable({
+				bProcessing:true,
+				oLanguage:{
+					"sProcessing":   "<i style='font-size:48px;' class='fa fa-refresh fa-spin'></i>"+
+									"<div>Sedang Proses...</div>",
+					"sLengthMenu": "Tampilan _MENU_ entri",
+					"sZeroRecords": "Tidak ada data yang sesuai",
+					"sInfo" 	: "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+					"sInfoEmpty" : "Tampilan 0 hingga 0 dari 0 entri",
+					"sInfoFiltered" : "(disaring dari _MAX_ entri keseluruhan)",
+					"sInfoPostFix" : " ",
+					"sSearch" : "Cari",
+					"sUrl" : " ",
+					"oPaginate" : {
+						"sFirst" : "Awal",
+						"sPrevious" : "Sebelum",
+						"sNext" : "Selanjutnya",
+						"sLast" : "Terakhir"
+					}
+				},
+				bServerSide:true,
+				sAjaxSource : "ref/jenis-peraturan"
+			});
+		}
+
+		myDataTable();
+
+		function form_default(){
+			jQuery.getJSON('cek/level', function(result){
+				if (result.kdlevel=='00' || result.kdlevel=='99') {
+					jQuery('#btn-tambah').html('<button type="button" id="tambah" class="btn btn-primary fa fa-plus"></button>');
+				}
+			});
+
+			jQuery('input,textarea').val('');
+			jQuery('.chosen').val('').trigger('chosen:updated');
+			jQuery('#div-form').hide();
+			jQuery('#div-table').show();
+			jQuery('.warning').hide();
+		}
+
+		form_default();
+
+		jQuery('#batal').click(function(){
+			form_default();
+		});
+
+		jQuery('body').off('click', '#tambah').on('click', '#tambah', function(){
+			jQuery('#div-table').hide();
+			jQuery('#div-form').show();
+			jQuery('#inp-rekambaru').val('1');
+			jQuery('#inp-id').val('');
+		});
+
+		jQuery('body').off('click', '.ubah-data').on('click', '.ubah-data', function(){
+			var id=this.id;
+			cari_data(id);
+		});
+
+		jQuery('#simpan').click(function(){
+			jQuery('#simpan').html('<span class="">Loading...</span>');
+			jQuery('#simpan').prop('disabled', true);
+
+			var lanjut = form_valid('jenis-peraturan');
+
+			if (lanjut) {
+				jQuery.get('token', function(token){
+					if(token){
+						jQuery('#_token').val(token);
+						var data=jQuery('#form-ruh').serialize();
+						if(jQuery('#inp-rekambaru').val()=='1'){
+							jQuery.ajax({
+								url:'ref/jenis-peraturan',
+								method:'POST',
+								data:data,
+								success:function(result){
+									if(result=='success'){
+										jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i>Simpan</span>');
+										jQuery('#simpan').prop('disabled',false);
+										alertify.log('Proses simpan berhasil!');
+										form_default();
+										myDataTable();
+									}
+									else{
+										alertify.log(result);
+										jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i>Simpan</span>');
+										jQuery('#simpan').prop('disabled', false);
+									}
+								},
+								error:function(result){
+									alertify.log('Koneksi terputus');
+									jQuery('#simpan').html('<s[an class=""><i class="fa fa-save"></i>Simpan</span>');
+									jQuery('#simpan').prop('disabled', false);
+								}
+							});
+						}
+						else{
+							jQuery.ajax({
+								url:'ref/jenis-peraturan',
+								method:'PUT',
+								data:data,
+								success:function(result){
+									if(result=='success'){
+										console.log ('babris');
+										jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i>Simpan</span>');
+										jQuery('#simpan').prop('disabled', false);
+										alertify.log('Proses simpan berhasil!');
+										form_default();
+										myDataTable();
+									}
+									else{
+										alertify.log(result);
+										jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i>Simpan</span>');
+										jQuery('#simpan').prop('disabled', false);
+									}
+								},
+								error:function(result){
+									alertify.log('Koneksi terputus');
+									jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i>Simpan</span>');
+									jQuery('#simpan').prop('disabled', false);
+								}
+							});
+						}
+					}
+					else{
+						jQuery('#simpan').html('simpan');
+						jQuery('#simpan').prop('disabled', false);
+						alertify.log('Proses ubah gagal. Silahkan refresh halaman browser Anda.');
+					}
+				});
+			}
+			else{
+				alertify.log('Kolom tidak dapat dikosongkan!');
+				jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i>Simpan</span>');
+				jQuery('#simpan').prop('disabled', false);
+			}
+		});
+
+		jQuery('body').off('click','.hapus-data').on('click','.hapus-data', function(){
+			var id=this.id;
+			alertify.confirm('Hapus data ini?', function(e){
+				if(e){
+					jQuery.get('token', function(token){
+						if(token){
+							jQuery.ajax({
+								url:'ref/jenis-peraturan',
+								method:'DELETE',
+								data:{
+									_token:token,
+									id:id
+								},
+								success:function(result){
+									if(result=='success'){
+										alertify.log('Proses hapus berhasil!');
+										myDataTable();
+									}
+									else{
+										alertify.log(result);
+									}
+								},
+								error:function(result){
+									alertify.log(result);
+								}
+							});
+						}
+						else{
+							alertify.log('Proses hapus gagal. Silahkan refresh halaman browser Anda.');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>

@@ -1,0 +1,627 @@
+<script>
+    if(typeof app === 'undefined'){
+        document.location.href='index.php';
+    }
+</script>
+
+<style>
+td.details-control {
+    background: url('../template/img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../template/img/details_close.png') no-repeat center center;
+}
+.chosen-container-multi .chosen-choices
+{
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.3);
+    border: none;
+    min-height: 38px;
+    cursor: text;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    text-indent: 0;
+	line-height: 1.25;
+	padding: .5rem .75rem;
+    font-size: 1rem;
+}
+</style>
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles">
+	 <div class="col-md-5 col-8 align-self-center">
+		<h3 class="text-themecolor m-b-0 m-t-0">Monitoring Peraturan</h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="javascript:void(0)">Monitoring</a></li>
+			<li class="breadcrumb-item active">Monitoring Peraturan</li>
+		</ol>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+	<!-- Column -->
+	<div class="col-12">
+		<div class="card card-outline-primary" id="div-tabel">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white"><i class="mdi mdi-monitor"></i> Monitoring Peraturan</h4>
+			</div>
+			<div class="card-body table-responsive">
+				<!-- <div class="table-responsive m-t-40"> -->
+					<table id="tabel-ruh" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>No</th>
+								<th>No Peraturan</th>
+								<th>Tahun Peraturan</th>
+								<th>Publish</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				<!-- </div> -->
+			</div>
+		</div>
+		<div class="card card-outline-primary" id="div-form">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white"><i class="mdi mdi-laptop-chromebook"></i> Ubah Data Peraturan</h4>
+			</div>
+			<div class="card-body">
+				<form id="form-ruh" name="form-ruh" class="form-horizontal input-form">
+					<input type="text" id="inp-id" name="inp-id" class="hide">
+					<input type="text" id="inp-rekambaru" name="inp-rekambaru" class="hide">
+					<input type="hidden" id="_token" name="_token" />
+					<input type="hidden" id="x" name="x">
+					<input type="hidden" id="arr_id_peraturan2" name="arr_id_peraturan2">
+					<input type="hidden" id="arr_status_peraturan" name="arr_status_peraturan">
+					<div class="form-group m-t-40 row">
+						<label class="col-form-label col-lg-3">ID</label>
+						<div class="col-lg-2">
+							<input id="id" name="id" class="form-control" value="<?php echo $id; ?>" readonly></input>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">No Peraturan</label>
+						<div class="col-lg-6">
+							<input id="no_peraturan" name="no_peraturan" class="form-control" value="<?php echo $id; ?>"></input>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-no_peraturan" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Tahun Peraturan</label>
+						<div class="col-lg-2">
+							<input id="tahun_peraturan" name="tahun_peraturan" class="form-control" value="<?php echo $nama; ?>"></input>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-tahun_peraturan" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Tentang</label>
+						<div class="col-lg-7">
+							<textarea id="tentang" name="tentang" class="form-control" rows="5" value="<?php echo $nama; ?>"></textarea>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-tentang" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Abstrak</label>
+						<div class="col-lg-7">
+							<textarea id="abstrak" name="abstrak" class="form-control" rows="5" value="<?php echo $nama; ?>"></textarea>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-abstrak" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Jenis Peraturan</label>
+						<div class="col-lg-7">
+							<select class="form-control chosen" id="jenis_peraturan" name="jenis_peraturan">
+								<option value="" style="display:none;">Pilih Data</option>
+							</select>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-jenis_peraturan" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Sifat Peraturan</label>
+						<div class="col-lg-6">
+							<select class="form-control chosen" id="sifat_peraturan" name="sifat_peraturan">
+								<option value="" style="display:none;">Pilih Data</option>
+							</select>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-sifat_peraturan" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Relasi Peraturan</label>
+						<div class="col-lg-7">
+							<table class="table table-bordered">
+								<tbody id="div-relasi">
+								</tbody>
+							</table>
+							<div class="pull-right">
+								<a href="javascript:;" id="tambah-detil" class="btn btn-primary">
+									<i class="fa fa-plus"></i> Tambah Relasi
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-no_peraturan" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Label</label>
+						<div class="col-lg-6">
+							<select class="form-control chosen chosen-select" multiple id="label" name="label[]">
+								<option value="" style="display:none;">Pilih Label</option>
+							</select>
+						</div>
+						<div class="col-lg-2">
+							<span id="warning-sifat_peraturan" class="label label-warning warning">Required!</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Status</label>
+						<div class="col-sm-3">
+							<div class="switch">
+								<label>Tidak Aktif
+									<input type="checkbox" id="status" name="status"><span class="lever switch-col-purple"></span>Aktif</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-3">Publish</label>
+						<div class="col-sm-3">
+							<div class="switch">
+								<label>Tidak
+									<input type="checkbox" id="publish" name="publish"><span class="lever switch-col-deep-purple"></span>Ya</label>
+							</div>
+						</div>
+					</div>
+					</br>
+					<div class="form-group row">
+						<label class="control-label col-lg-3"></label>
+						<div class="col-lg-5">
+							<button id="simpan" type="submit" class="btn btn-primary waves-effect waves-light m-r-10">Simpan</button>
+							<button id="batal" type="submit" class="btn btn-inverse waves-effect waves-light">Batal</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- sample modal content -->
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">Pilih Peraturan</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<table id="tabel-peraturan" class="table table-bordered table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>No Peraturan</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+		<!-- sample modal content -->
+		<div class="modal fade myModalLabel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">Pilih Relasi</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<table id="tabel-relasi" class="table table-bordered table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Relasi</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</div>
+	<!-- Column -->
+</div>
+<!-- Row -->
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+<script>
+    $(document).ready(function() {
+		
+		jQuery.fn.dataTable.ext.errMode = 'none';
+		
+		jQuery('.chosen').chosen();
+		
+		jQuery.get('dropdown/jenis-peraturan', function(result){
+			jQuery('#jenis_peraturan').html(result).trigger('chosen:updated');
+		});
+		
+		jQuery.get('dropdown/sifat-peraturan', function(result){
+			jQuery('#sifat_peraturan').html(result).trigger('chosen:updated');
+		});
+		
+		jQuery.get('dropdown/label', function(result){
+			jQuery('#label').html(result).trigger('chosen:updated');
+		});
+		
+		function format ( d ) {
+			// `d` is the original data object for the row
+			return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" class="w-100">'+
+				'<tr>'+
+					'<td class="w-25">Jenis Peraturan:</td>'+
+					'<td class="w-75">'+d[6]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Sifat Peraturan:</td>'+
+					'<td>'+d[7]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Status Peraturan:</td>'+
+					'<td>'+d[8]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Tentang:</td>'+
+					'<td>'+d[9]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Abstrak:</td>'+
+					'<td>'+d[10]+'</td>'+
+				'</tr>'+
+			'</table>';
+		}
+		
+		function cari_data(id){
+			jQuery.getJSON('mon/peraturan/'+id, function(result){
+				if(result){
+					jQuery('#inp-id').val(result.id);
+					jQuery('#inp-rekambaru').val('0');
+					jQuery('#id').val(result.id);
+					jQuery('#no_peraturan').val(result.no_peraturan);
+					jQuery('#tahun_peraturan').val(result.tahun_peraturan);
+					jQuery('#jenis_peraturan').val(result.id_jenis_peraturan).trigger('chosen:updated');
+					jQuery('#sifat_peraturan').val(result.id_sifat_peraturan).trigger('chosen:updated');
+					jQuery('#tentang').val(result.tentang);
+					jQuery('#abstrak').val(result.abstrak);
+					jQuery('#status').val(result.id_status_peraturan);
+					if(result.id_status_peraturan=='1'){
+						jQuery('#status').prop('checked',true);
+					} else {
+						jQuery('#status').prop('checked',false);
+					}
+					jQuery('#publish').val(result.is_publish);
+					if(result.is_publish=='1'){
+						jQuery('#publish').prop('checked',true);
+					} else {
+						jQuery('#publish').prop('checked',false);
+					}
+					jQuery('#div-relasi').html(
+						'<tr id="tr-1">'+
+							'<td style="display:none;"><input class="form-control" name="relasi[1][id_relasi]"></td>'+
+							'<td><div class="input-group">'+
+                                    '<input type="text" class="form-control" name="relasi[1][id_peraturan2]" placeholder="Pilih Peraturan" disabled>'+
+                                        '<span class="input-group-btn">'+
+											'<button class="btn btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">Go!</button>'+
+										'</span>'+
+                                '</div>'+
+							'</td>'+
+							'<td><div class="input-group">'+
+                                    '<input type="text" class="form-control"  name="relasi[1][status_peraturan]" placeholder="Pilih Relasi" disabled>'+
+                                        '<span class="input-group-btn">'+
+											'<button class="btn btn-info" type="button" data-toggle="modal" data-target=".myModalLabel">Go!</button>'+
+										'</span>'+
+                                '</div>'+
+							'</td>'+
+							'<td>'+
+								'<center><a href="javascript:;" id="1" class="btn btn-xs btn-danger hapus-detil"><i class="fa fa-minus"></i></a></center>'+
+							'</td>'+
+						'</tr>'
+					);
+					jQuery('#div-tabel').hide();
+					jQuery('#div-form').show();
+				}
+			});
+			jQuery.get('mon/label/'+id, function(result){
+                var list = [];
+                list.push(result);
+                jQuery('#label').html(list.join('')).trigger('chosen:updated');
+            });
+		}
+		
+		jQuery('#tambah-detil').click(function(){
+			var x=parseInt(jQuery('#x').val())+1;
+			jQuery('#div-relasi').append(
+				'<tr id="tr-'+x+'">'+
+					'<td style="display:none;"><input class="form-control" name="relasi['+x+'][id_relasi]"></td>'+
+					'<td><div class="input-group">'+
+							'<input type="text" class="form-control" name="relasi['+x+'][id_peraturan2]" placeholder="Pilih Peraturan" disabled>'+
+								'<span class="input-group-btn">'+
+									'<button class="btn btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">Go!</button>'+
+								'</span>'+
+						'</div>'+
+					'</td>'+
+					'<td><div class="input-group">'+
+							'<input type="text" class="form-control"  name="relasi['+x+'][status_peraturan]" placeholder="Pilih Relasi" disabled>'+
+								'<span class="input-group-btn">'+
+									'<button class="btn btn-info" type="button" data-toggle="modal" data-target=".myModalLabel">Go!</button>'+
+								'</span>'+
+						'</div>'+
+					'</td>'+
+					'<td>'+
+						'<center><a href="javascript:;" id="'+x+'" class="btn btn-xs btn-danger hapus-detil"><i class="fa fa-minus"></i></a></center>'+
+					'</td>'+
+				'</tr>'
+			);
+			jQuery('#x').val(x);
+		});
+		
+		jQuery('body').off('click', '.hapus-detil').on('click', '.hapus-detil', function(){
+			var id=this.id;
+			jQuery('#tr-'+id).remove();
+		});
+		
+		function form_valid(str_id){
+			var arr_id=str_id.split(',');
+			var lanjut=true;
+			for(x=0;x<arr_id.length;x++){
+				if(jQuery('#'+arr_id[x]).val()==''){
+					jQuery('#warning-'+arr_id[x]).show();
+					lanjut=false;
+				}
+			}
+			return lanjut;
+		}
+		
+		var table1 = jQuery('#tabel-ruh').DataTable({
+			//bFilter: false,
+			//bProcessing:true,
+			oLanguage:{
+				"sProcessing":   "Sedang proses...",
+				"sLengthMenu":   "Tampilan _MENU_ entri",
+				"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+				"sInfo":         "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+				"sInfoEmpty":    "Tampilan 0 hingga 0 dari 0 entri",
+				"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+				"sInfoPostFix":  "",
+				"sSearch":       "Cari:",
+				"sUrl":          "",
+				"oPaginate": {
+				  "sFirst":    "Awal",
+				  "sPrevious": "Sebelum",
+				  "sNext":     "Sesudah",
+				  "sLast":     "Akhir"
+				}
+			},
+			"columns": [
+				{
+					"className":      'details-control',
+					"orderable":      false,
+					"data":           null,
+					"defaultContent": ''
+				},
+				{},
+				{},
+				{},
+				{},
+				{}
+			],
+			aaSorting: [],
+			bServerSide: true,
+			sAjaxSource: "mon/peraturan"
+		});
+		
+		var table2 = jQuery('#tabel-peraturan').DataTable({
+			//bFilter: false,
+			//bProcessing:true,
+			oLanguage:{
+				"sProcessing":   "Sedang proses...",
+				"sLengthMenu":   "Tampilan _MENU_ entri",
+				"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+				"sInfo":         "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+				"sInfoEmpty":    "Tampilan 0 hingga 0 dari 0 entri",
+				"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+				"sInfoPostFix":  "",
+				"sSearch":       "Cari:",
+				"sUrl":          "",
+				"oPaginate": {
+				  "sFirst":    "Awal",
+				  "sPrevious": "Sebelum",
+				  "sNext":     "Sesudah",
+				  "sLast":     "Akhir"
+				}
+			},
+			"columns": [
+				{},
+				{},
+				{}
+			],
+			aaSorting: [],
+			bServerSide: true,
+			sAjaxSource: "mon/peraturan-modal"
+		});
+		
+		var table3 = jQuery('#tabel-relasi').DataTable({
+			//bFilter: false,
+			//bProcessing:true,
+			oLanguage:{
+				"sProcessing":   "Sedang proses...",
+				"sLengthMenu":   "Tampilan _MENU_ entri",
+				"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+				"sInfo":         "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+				"sInfoEmpty":    "Tampilan 0 hingga 0 dari 0 entri",
+				"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+				"sInfoPostFix":  "",
+				"sSearch":       "Cari:",
+				"sUrl":          "",
+				"oPaginate": {
+				  "sFirst":    "Awal",
+				  "sPrevious": "Sebelum",
+				  "sNext":     "Sesudah",
+				  "sLast":     "Akhir"
+				}
+			},
+			"columns": [
+				{},
+				{},
+				{}
+			],
+			aaSorting: [],
+			bServerSide: true,
+			sAjaxSource: "mon/relasi-modal"
+		});
+		
+		// Add event listener for opening and closing details
+		$('#tabel-ruh').on('click', 'td.details-control', function () {
+			var tr = $(this).closest('tr');
+			var row = table1.row( tr );
+			console.log('tes');
+	 
+			if ( row.child.isShown() ) {
+				// This row is already open - close it
+				row.child.hide();
+				tr.removeClass('shown');
+			}
+			else {
+				// Open this row
+				row.child( format(row.data()) ).show();
+				tr.addClass('shown');
+			}
+		} );
+		
+		function form_default(){
+			jQuery('input,textarea').val('');
+			jQuery('.chosen').val('').trigger('chosen:updated');
+			jQuery('#div-form').hide();
+			jQuery('#div-tabel').show();
+			//jQuery('#div-kppn,#div-kanwil').hide();
+			jQuery('.warning').hide();
+		}
+		
+		form_default();
+		
+		$("input[type='checkbox']").change(function(){
+			if($(this).prop("checked") == true){
+			   //run code
+			   jQuery($(this).val('1'));
+			}else{
+			   //run code
+			   jQuery($(this).val('0'));
+			}
+		});
+		
+		jQuery('#batal').click(function(){
+			form_default();
+		});
+		
+		jQuery('body').off('click', '.ubah-data').on('click', '.ubah-data', function(){
+			var id=this.id;
+			cari_data(id);
+		});
+		
+		jQuery('body').off('click', '.pilih-data-peraturan').on('click', '.pilih-data-peraturan', function(){
+			var id=this.id;
+			console.log(id);
+		});
+		
+		jQuery('body').off('click', '.pilih-data-relasi').on('click', '.pilih-data-relasi', function(){
+			var id=this.id;
+			console.log(id);
+		});
+		
+		jQuery('#simpan').click(function(){
+			jQuery('#simpan').html('<span class="">Loading.....</span>');
+			jQuery('#simpan').prop('disabled', true);
+			
+			var lanjut = form_valid('id,no_peraturan,tahun_peraturan,tentang,abstrak,jenis_peraturan,sifat_peraturan');
+			
+			if(lanjut){
+			
+				jQuery.get('token', function(token){
+					if(token){
+						jQuery('#_token').val(token);
+						var data = jQuery('#form-ruh').serialize();
+						jQuery.ajax({
+							url:'mon/peraturan',
+							method:'PUT',
+							data:data,
+							success:function(result){
+								if(result=='success'){
+									jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+									jQuery('#simpan').prop('disabled',false);
+									alertify.log('Proses simpan berhasil!');
+									form_default();
+									table1.ajax.reload();
+								}
+								else{
+									alertify.log(result);
+									jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+									jQuery('#simpan').prop('disabled', false);
+								}
+							},
+							error:function(result){
+								alertify.log('Koneksi terputus!');
+								jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+								jQuery('#simpan').prop('disabled', false);
+							}
+						});
+						
+					}
+					else{
+						jQuery('#simpan').html('Simpan');
+						jQuery('#simpan').prop('disabled',false);
+						alertify.log('Proses ubah gagal. Silahkan refresh halaman browser anda.');
+					}
+				});
+				
+			}
+			else{
+				alertify.log('Kolom tidak dapat dikosongkan!');
+				jQuery('#simpan').html('<span class=""><i class="fa fa-save"></i> Simpan</span>');
+				jQuery('#simpan').prop('disabled', false);
+			}
+		});
+		
+    });
+</script>

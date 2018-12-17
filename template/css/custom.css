@@ -1,0 +1,132 @@
+/**
+ *  For seven-cols purposes
+ */
+@media (min-width: 768px) {
+    .seven-cols .col-md-1,
+    .seven-cols .col-sm-1,
+    .seven-cols .col-lg-1  {
+      width: 100%;
+      *width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .seven-cols .col-md-1,
+    .seven-cols .col-sm-1,
+    .seven-cols .col-lg-1 {
+      width: 14.285714285714285714285714285714%;
+      *width: 14.285714285714285714285714285714%;
+    }
+}
+
+/* To demonstrate the usage of @media for large screens */    
+@media (min-width: 1200px) {
+    .seven-cols .col-md-1,
+    .seven-cols .col-sm-1,
+    .seven-cols .col-lg-1 {
+      width: 14.285714285714285714285714285714%;
+      *width: 14.285714285714285714285714285714%;
+    }
+}
+
+
+/*-- Navigation Widget --*/
+#nav-widget {
+    border: 0px;
+    margin-bottom:0px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+#nav-widget .btn-group:not(:first-child) {
+    border-left: 1px solid #F5F0EC;
+}
+#nav-widget .btn{
+    background-color: #fff;
+    /* background-color: #fff7e6; */
+    border: 0px;
+    padding: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #fff;
+}
+#nav-widget .btn:hover {
+    background-color: #F8F3F0;
+    color: #64584C;
+    border-bottom: 3px solid #55BC75;
+}
+#nav-widget i.fa {
+    padding-right: 5px;
+}
+#nav-widget .badge {
+    font-size: .7em;
+    background-color: #E7663F;
+    margin-left:4px;
+    top: -10px;
+}
+#nav-widget .btn.active {
+    background-color: #F8F3F0;
+    color: #64584C;
+    border-bottom: 3px solid #55BC75;
+}
+
+@media only screen and (max-width: 767px) { /* phones */
+    #nav-widget .btn {
+        text-align: left;
+    }
+    #nav-widget .btn-group:not(:first-child) {
+        margin: 0px;
+        border-left: 0px;
+        border-top: 1px solid #F5F0EC;
+    }
+    .btn-group>.btn {
+        border-radius: 0;
+    }
+    .btn-group>.btn:last-child {
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .btn-group-justified>.btn, .btn-group-justified>.btn-group {
+        float: left;
+        width: 100%;
+    }
+    .btn-group>.btn-group>.btn {
+        border-radius: 0;
+    }
+    .btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group {
+        margin-left: 0px;
+    }
+    .btn-group>.btn-group:first-child>.btn:last-child {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    .btn-group>.btn-group:last-child>.btn:last-child {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+}
+
+
+/* For circle button */
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}

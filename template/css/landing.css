@@ -1,0 +1,80 @@
+.navbar-default{
+	background-color:#fff;
+}
+
+.navbar-default .navbar-brand {
+    color:#3498db;
+}
+
+.masuk{
+	position:absolute;
+	top:20%;
+	right:10%
+}
+
+.tombol-masuk{
+	font-size:12px;
+	padding: 6px 20px;
+}
+
+.dropdown-masuk{
+	padding:14px;
+}
+
+.marquee{
+	position:fixed;
+	left:0;
+	right:0;
+	background-color:#3498db;
+	color:#fff;
+}
+
+#headerwrap{
+	background-color:#fff;
+	min-height:700px;
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.pop{
+	text-decoration: underline;
+    text-decoration-color: #3498db;
+}
+
+.populer{
+	/*margin-top:15px;*/
+	font-size:24px;
+	color:#3498db;
+	font-weight:400;
+}
+
+.populer-border{
+	border: 0.5px solid #3498db;
+	border-left: none;
+	border-bottom: none;
+	border-right: none;
+}
+
+#headerwrap2{
+	margin-top:100px;
+	background-color: #fff;
+    min-height: 600px;
+	background-size: cover;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+	color: #fff !important;
+	background-color: #3399CC !important;
+	border:none !important;
+}

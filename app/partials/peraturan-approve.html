@@ -1,0 +1,242 @@
+<script>
+    if(typeof app === 'undefined'){
+        document.location.href='index.php';
+    }
+</script>
+
+<style>
+td.details-control {
+    background: url('../template/img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../template/img/details_close.png') no-repeat center center;
+}
+.chosen-container-multi .chosen-choices
+{
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.3);
+    border: none;
+    min-height: 38px;
+    cursor: text;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    text-indent: 0;
+	line-height: 1.25;
+	padding: .5rem .75rem;
+    font-size: 1rem;
+}
+</style>
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles m-b-0">
+	 <div class="col-md-5 col-8 align-self-center">
+		<h3 class="text-themecolor m-b-0 m-t-0">Approve Peraturan</h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="javascript:void(0)">Peraturan</a></li>
+			<li class="breadcrumb-item active">Approve Peraturan</li>
+		</ol>
+	</div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+	<!-- Column -->
+	<div class="col-12">
+		<div class="card card-outline-primary" id="div-tabel">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white"><i class="mdi mdi-checkbox-multiple-marked-outline"></i> Approve Peraturan</h4>
+			</div>
+			<div class="card-body table-responsive">
+				<!-- <div class="table-responsive m-t-40"> -->
+					<table id="tabel-ruh" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>No</th>
+								<th>No Peraturan</th>
+								<th>Tahun Peraturan</th>
+								<th>Publish</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+</div>
+<!-- Row -->
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+<script>
+    $(document).ready(function() {
+		
+		jQuery.fn.dataTable.ext.errMode = 'none';
+		
+		jQuery('.chosen').chosen();
+		
+		/*jQuery.get('dropdown/alur-peraturan', function(result){
+			jQuery('#alur_peraturan').html(result).trigger('chosen:updated');
+		});*/
+		
+		function format ( d ) {
+			// `d` is the original data object for the row
+			$html_out = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" class="w-100">'+
+				'<tr>'+
+					'<td class="w-25">Jenis Peraturan:</td>'+
+					'<td class="w-75">'+d[6]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Sifat Peraturan:</td>'+
+					'<td>'+d[7]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Status Peraturan:</td>'+
+					'<td>'+d[8]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Tentang:</td>'+
+					'<td>'+d[9]+'</td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>Abstrak:</td>'+
+					'<td>'+d[10]+'</td>'+
+				'</tr>'+
+			'</table>';
+
+			return $html_out;
+		}
+		
+		var table = jQuery('#tabel-ruh').DataTable({
+			//bFilter: false,
+			bProcessing:true,
+			oLanguage:{
+				"sProcessing":   "<i style='font-size:48px;' class='fa fa-refresh fa-spin'></i>"+
+									"<div>Sedang Proses...</div>",
+				"sLengthMenu":   "Tampilan _MENU_ entri",
+				"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+				"sInfo":         "Tampilan _START_ sampai _END_ dari _TOTAL_ entri",
+				"sInfoEmpty":    "Tampilan 0 hingga 0 dari 0 entri",
+				"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+				"sInfoPostFix":  "",
+				"sSearch":       "Cari:",
+				"sUrl":          "",
+				"oPaginate": {
+				  "sFirst":    "Awal",
+				  "sPrevious": "Sebelum",
+				  "sNext":     "Sesudah",
+				  "sLast":     "Akhir"
+				}
+			},
+			"columns": [
+				{
+					"className":      'details-control',
+					"orderable":      false,
+					"data":           null,
+					"defaultContent": ''
+				},
+				{},
+				{},
+				{},
+				{"orderable":false}
+			],
+			aaSorting: [],
+			bServerSide: true,
+			sAjaxSource: "peraturan/approve"
+		});
+		
+		// Add event listener for opening and closing details
+		$('#tabel-ruh').on('click', 'td.details-control', function () {
+			var tr = $(this).closest('tr');
+			var row = table.row( tr );
+	 
+			if ( row.child.isShown() ) {
+				// This row is already open - close it
+				row.child.hide();
+				tr.removeClass('shown');
+			}
+			else {
+				// Open this row
+				row.child( format(row.data()) ).show();
+				tr.addClass('shown');
+			}
+		} );
+		
+		function form_default(){
+			jQuery('input,textarea').val('');
+			jQuery('.chosen').val('').trigger('chosen:updated');
+			jQuery('#div-form').hide();
+			jQuery('#div-tabel').show();
+			//jQuery('#div-kppn,#div-kanwil').hide();
+			jQuery('.warning').hide();
+		}
+		
+		form_default();
+		
+		$("input[type='checkbox']").change(function(){
+			if($(this).prop("checked") == true){
+			   //run code
+			   jQuery($(this).val('1'));
+			}else{
+			   //run code
+			   jQuery($(this).val('0'));
+			}
+		});
+		
+		jQuery('body').off('click', '.publish').on('click', '.publish', function(){
+			var id=this.id;
+			var is_publish=this.name;
+			//console.log(is_publish);
+			alertify.confirm('Anda yakin mengubah status publish peraturan ini?', function(e){
+				if(e){
+					jQuery.get('token', function(token){
+						if(token){
+							jQuery.ajax({
+								url:'peraturan/approve',
+								method:'PUT',
+								data:{
+									_token:token,
+									id:id,
+									is_publish:is_publish
+								},
+								success:function(result){
+									if(result=='success'){
+										jQuery('#simpan').html('Simpan');
+										jQuery('#simpan').prop('disabled',false);
+										alertify.log('Proses ubah berhasil.');
+										table.ajax.reload();
+									}
+									else{
+										jQuery('#simpan').html('Simpan');
+										jQuery('#simpan').prop('disabled',false);
+										alertify.log(result);
+									}	
+								},
+								error:function(result){
+									jQuery('#simpan').html('Simpan');
+									jQuery('#simpan').prop('disabled',false);
+									alertify.log(result);
+								}
+							});
+						}
+						else{
+							jQuery('#simpan').html('Simpan');
+							jQuery('#simpan').prop('disabled',false);
+							alertify.log('Proses ubah gagal. Silahkan refresh halaman browser anda.');
+						}
+					});
+				}
+			});
+			return false;
+		});
+    });
+</script>
